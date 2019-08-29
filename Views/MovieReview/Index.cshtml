@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ASPApplication.Models.MovieReviews>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Movie Reviews</h2>
+<h3>Hello reviewer, We are having @Model.Count() Reviews</h3>
+@*Model is the object for model that we created*@
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("CreateNew", "Create")@*anchor tag, first one is what to show in page,2nd one is action method from controller*@
+</p>
+<div>
+    <table>
+        <tr><th>Movie Name</th>&nbsp;&nbsp;<th>Reviewer Name</th>&nbsp;&nbsp;<th>Reviewer Comments</th>&nbsp;&nbsp;<th>Reviewer Ratings</th></tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td><h5>@item.MovieName</h5></td>&nbsp;&nbsp;
+        <td><span>@item.ReviewerName</span></td>&nbsp;&nbsp;
+        <td><span>@item.ReviewerComments</span></td>&nbsp;&nbsp;
+        <td><span>@item.ReviewerRatings</span></td>&nbsp;&nbsp;
+        <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>&nbsp;&nbsp;
+        <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+    </tr>
+        }
+    </table>
+</div>
